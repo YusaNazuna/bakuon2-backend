@@ -1,0 +1,9 @@
+###### Pro用環境変数 ######
+
+ENVFILE: Production environment
+RDS_HOST:
+RDS_PORT:
+RDS_USER:
+RDS_PW:
+RDS_DB:
+RDS_CONN_LIMMIT:

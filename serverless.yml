@@ -1,0 +1,43 @@
+service:
+  name: bakuon2-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+  stage: ${opt:stage, self:custom.defaultStage}
+  apiGateway:
+    minimumCompressionSize: 1024
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    TZ: Asia/Tokyo
+
+custom:
+  defaultStage: dev
+  profiles:
+    dev: sls
+    prd: sls
+  otherfile:
+    environment:
+      dev: ${file(./env/dev/environment.yml)}
+      prd: ${file(./env/prd/environment.yml)}
+
+package:
+  exclude:
+    - .git/**
+    - test/**
+    - README.md
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+
+functions:
+  bakuon2Backend:
+    handler: app.handler
+    environment:
+      ENVFILE: ${self:custom.otherfile.environment.${self:provider.stage}.ENVFILE}
+    events:
+      - http:
+          method: ANY
+          path: /api/{all+}

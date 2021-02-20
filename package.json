@@ -1,0 +1,32 @@
+{
+  "name": "bakuon2-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "local": "sls offline --httpPort 3001",
+    "dev": "sls deploy --stage dev",
+    "start": "sls deploy --stage prd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YusaNazuna/bakuon2-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YusaNazuna/bakuon2-backend/issues"
+  },
+  "homepage": "https://github.com/YusaNazuna/bakuon2-backend#readme",
+  "dependencies": {
+    "@vendia/serverless-express": "^4.3.2",
+    "aws-lambda-router": "^0.9.1",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.3",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "serverless-bundle": "^4.2.1",
+    "serverless-offline": "^6.8.0"
+  }
+}
