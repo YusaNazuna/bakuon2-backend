@@ -1,6 +1,6 @@
-import { HelloController } from '../controllers/hello.controller';
+import { SearchNovelController } from '../controllers/search-novel.controller';
 
-export const routes = [makePostRoute('/api/hello', HelloController)];
+export const routes = [makePostRoute('/api/search/novel', SearchNovelController)];
 
 function makePostRoute(path, action) {
   return {

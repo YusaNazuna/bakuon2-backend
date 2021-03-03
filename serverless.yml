@@ -37,6 +37,12 @@ functions:
     handler: app.handler
     environment:
       ENVFILE: ${self:custom.otherfile.environment.${self:provider.stage}.ENVFILE}
+      RDS_HOST: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_HOST}
+      RDS_PORT: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_PORT}
+      RDS_USER: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_USER}
+      RDS_PW: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_PW}
+      RDS_DB: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_DB}
+      RDS_CONN_LIMMIT: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_CONN_LIMMIT}
     events:
       - http:
           method: ANY
