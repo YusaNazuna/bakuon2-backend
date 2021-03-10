@@ -1,13 +1,14 @@
-service:
-  name: bakuon2-api
+service: bakuon2-api
 
 provider:
   name: aws
   runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
   region: ap-northeast-1
   stage: ${opt:stage, self:custom.defaultStage}
   apiGateway:
     minimumCompressionSize: 1024
+    shouldStartNameWithService: true
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     TZ: Asia/Tokyo
@@ -43,7 +44,18 @@ functions:
       RDS_PW: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_PW}
       RDS_DB: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_DB}
       RDS_CONN_LIMMIT: ${self:custom.otherfile.environment.${self:provider.stage}.RDS_CONN_LIMMIT}
+      SECRET: ${self:custom.otherfile.environment.${self:provider.stage}.SECRET}
     events:
       - http:
-          method: ANY
           path: /api/{all+}
+          method: any
+          cors:
+            origin: http://localhost:3000
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true

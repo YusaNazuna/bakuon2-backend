@@ -3,6 +3,7 @@ import { routes } from './src/routes/router';
 
 export const handler = router.handler({
   proxyIntegration: {
+    cors: true,
     routes
   }
 });

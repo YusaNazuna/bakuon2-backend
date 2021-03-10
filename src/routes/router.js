@@ -1,11 +1,11 @@
-import { SearchNovelController } from '../controllers/search-novel.controller';
+import { SearchAdminNovelController } from '../controllers/search-admin-novel.controller';
 
-export const routes = [makePostRoute('/api/search/novel', SearchNovelController)];
+export const routes = [makePostRoute('/api/search/admin/novel', 'GET', SearchAdminNovelController)];
 
-function makePostRoute(path, action) {
+function makePostRoute(path, method, action) {
   return {
     path: path,
-    method: 'POST',
+    method: method,
     action: action
   };
 }

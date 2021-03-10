@@ -21,7 +21,9 @@
   "dependencies": {
     "@vendia/serverless-express": "^4.3.2",
     "aws-lambda-router": "^0.9.1",
+    "cookie": "^0.4.1",
     "express": "^4.17.1",
+    "jwt-simple": "^0.5.6",
     "mariadb": "^2.5.3",
     "mysql": "^2.18.1"
   },
